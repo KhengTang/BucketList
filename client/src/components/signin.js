@@ -34,14 +34,14 @@ export default function Create() {
      return;
    });
  
-   setForm({ email: "", password: ""});
+   setForm({ email: "", position: ""});
    navigate("/");
  }
  
  // This following section will display the form that takes the input from the user.
  return (
    <div>
-     <h3>Sign up</h3>
+     <h3>Login in</h3>
      <form onSubmit={onSubmit}>
        <div className="form-group">
          <label htmlFor="email">Email</label>
@@ -66,7 +66,7 @@ export default function Create() {
        <div className="form-group">
          <input
            type="submit"
-           value="Sign up"
+           value="Sign in"
            className="btn btn-primary"
          />
        </div>

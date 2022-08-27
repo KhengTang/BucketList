@@ -47,9 +47,8 @@ export default function Edit() {
  async function onSubmit(e) {
    e.preventDefault();
    const editedPerson = {
-     name: form.name,
-     position: form.position,
-     level: form.level,
+    email: form.email,
+    password: form.password,
    };
  
    // This will send a post request to update the data in the database.
@@ -70,62 +69,24 @@ export default function Edit() {
      <h3>Update Record</h3>
      <form onSubmit={onSubmit}>
        <div className="form-group">
-         <label htmlFor="name">Name: </label>
+         <label htmlFor="email">Email: </label>
          <input
            type="text"
            className="form-control"
-           id="name"
-           value={form.name}
-           onChange={(e) => updateForm({ name: e.target.value })}
+           id="email"
+           value={form.email}
+           onChange={(e) => updateForm({ email: e.target.value })}
          />
        </div>
        <div className="form-group">
-         <label htmlFor="position">Position: </label>
+         <label htmlFor="password">Password: </label>
          <input
            type="text"
            className="form-control"
-           id="position"
-           value={form.position}
-           onChange={(e) => updateForm({ position: e.target.value })}
+           id="password"
+           value={form.password}
+           onChange={(e) => updateForm({ password: e.target.value })}
          />
-       </div>
-       <div className="form-group">
-         <div className="form-check form-check-inline">
-           <input
-             className="form-check-input"
-             type="radio"
-             name="positionOptions"
-             id="positionIntern"
-             value="Intern"
-             checked={form.level === "Intern"}
-             onChange={(e) => updateForm({ level: e.target.value })}
-           />
-           <label htmlFor="positionIntern" className="form-check-label">Intern</label>
-         </div>
-         <div className="form-check form-check-inline">
-           <input
-             className="form-check-input"
-             type="radio"
-             name="positionOptions"
-             id="positionJunior"
-             value="Junior"
-             checked={form.level === "Junior"}
-             onChange={(e) => updateForm({ level: e.target.value })}
-           />
-           <label htmlFor="positionJunior" className="form-check-label">Junior</label>
-         </div>
-         <div className="form-check form-check-inline">
-           <input
-             className="form-check-input"
-             type="radio"
-             name="positionOptions"
-             id="positionSenior"
-             value="Senior"
-             checked={form.level === "Senior"}
-             onChange={(e) => updateForm({ level: e.target.value })}
-           />
-           <label htmlFor="positionSenior" className="form-check-label">Senior</label>
-       </div>
        </div>
        <br />
  
