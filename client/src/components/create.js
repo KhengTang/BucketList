@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import validator from 'validator';
  
 export default function Create() {
  const [form, setForm] = useState({
@@ -15,10 +16,28 @@ export default function Create() {
    });
  }
  
+ function isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+ }
+ 
+ function isValidPassword(password) {
+    return validator.isStrongPassword(password, {minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1});
+}
+
  // This function will handle the submission.
  async function onSubmit(e) {
    e.preventDefault();
- 
+
+   if(!isValidEmail(form.email)) {
+    window.alert("Email is invalid.");
+    return;
+   }
+   if(!isValidPassword(form.password)) {
+    window.alert("Password is not strong.");
+    return;
+   }
+  console.log("This is onSubmit email console log : " + form.email);
+  console.log("This is onSubmit e target value console log : " + e.target.value);
    // When a post request is sent to the create url, we'll add a new record to the database.
    const newPerson = { ...form };
  
